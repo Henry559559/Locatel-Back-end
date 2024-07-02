@@ -29,7 +29,7 @@ DJANGO_APPS = [
 
 PROJECT_APPS = ['apps.user',]
 
-ECOMMERCE_APPS = ['apps.category','apps.product']
+ECOMMERCE_APPS = ['apps.category','apps.product','apps.cart']
 
 THIRD_PARTTY_APPS = [
     'corsheaders',
@@ -189,6 +189,7 @@ SIMPLE_JWT = {
         'rest_framework_simplejwt.tokens.AccessToken',
     ),
      'TOKEN_BLACKLIST_SERIALIZER': 'rest_framework_simplejwt.token_blacklist.serializers.TokenBlacklistSerializer',
+     
 }
 
 DJOSER = {

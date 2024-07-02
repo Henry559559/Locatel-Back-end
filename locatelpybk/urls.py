@@ -10,16 +10,12 @@ urlpatterns = [
     path('auth/', include('djoser.social.urls')),
     path('api/category/', include('apps.category.urls')),
     path('api/product/', include('apps.product.urls')),
-    path('admin/', admin.site.urls),
+    path('api/cart/', include('apps.cart.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     # Incluye tus otras rutas de Django aquí, por ejemplo:
     # path('api/', include('your_app.urls')),
-]
+    path('admin/', admin.site.urls),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# Configuración para servir archivos multimedia durante el desarrollo
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-# Cualquier otra ruta será manejada por React
-urlpatterns += [re_path(r'^.*$', TemplateView.as_view(template_name='index.html'))]
+urlpatterns += [re_path(r'^.*',
+                        TemplateView.as_view(template_name='index.html'))]
